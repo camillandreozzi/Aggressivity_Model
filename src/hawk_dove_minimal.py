@@ -109,7 +109,7 @@ def simulate(
 
 
 def main() -> None:
-    x0 = 0.5  # initial hawk proportion
+    x0 = 0.99  # initial hawk proportion
     n_steps = 400
     dt = 0.05
 
