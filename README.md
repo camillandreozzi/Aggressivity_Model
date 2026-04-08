@@ -2,48 +2,25 @@
 
 This repository is a small but growing collection of simulations inspired by the work of **John Maynard Smith** and the development of **evolutionary game theory**.
 
-Rather than treating strategy as something chosen by perfectly rational agents, evolutionary game theory studies what happens when different behavioural types reproduce, compete, and change in frequency over time. In that setting, success is not defined by abstract rationality alone, but by whether a strategy can persist, spread, or resist invasion in a population.
+Evolutionary game theory studies what happens when different behavioural types reproduce, compete, and change in frequency over time. In that setting, success is defined by whether a strategy can survive, spread, or perish in a population.
 
-This repository focuses on simple, interpretable models that help make those ideas concrete through simulation.
+This repository is built in the spirit that visualisation and simulation are best to learn and frame such theoretical concepts.
 
 ---
 
 ## John Maynard Smith
 
-John Maynard Smith was one of the central figures in twentieth-century theoretical biology. Trained originally as an engineer and later becoming a major evolutionary biologist, he helped bring mathematical reasoning into the study of behaviour, conflict, and adaptation.
+John Maynard Smith was one of the central figures in twentieth-century theoretical biology. 
+He is especially known for developing **evolutionary game theory** as a biological framework. His work showed that strategic interaction is a core part of evolution. Organisms do not consciously calculate optimal choices, it is natural selection driving the performance of a behavioural strategy.
 
-He is especially known for developing **evolutionary game theory** as a biological framework. His work showed that strategic interaction is not only a matter for economics or philosophy, but also a core part of evolution itself. Organisms do not need to consciously calculate optimal choices: if a behavioural strategy performs well in a population, it can spread by natural selection.
-
-Among his best-known contributions is the concept of the **Evolutionarily Stable Strategy (ESS)**: a strategy that, once common in a population, cannot easily be invaded by an alternative strategy. This idea became one of the foundations of modern evolutionary thinking about conflict, cooperation, signalling, and social behaviour.
-
-Maynard Smith’s work connects directly to classic models such as:
-
-- Hawk–Dove conflict
-- Rock–Paper–Scissors style cyclic competition
-- signalling and contest behaviour
-- frequency-dependent selection more broadly
-
-This repository is built in that intellectual tradition.
+Among his best-known contributions is the concept of the **Evolutionarily Stable Strategy (ESS)**. With the term we refer to a strategy that, once common in a population, cannot easily be invaded by an alternative strategy. This idea became one of the foundations of modern evolutionary thinking about conflict, cooperation, signalling, and social behaviour.
 
 ---
 
 ## What is evolutionary game theory?
 
 Evolutionary game theory studies populations of interacting strategies.
-
-The key idea is that the success of a strategy depends on the strategies it meets. In other words, fitness is often **frequency-dependent**. A strategy may do well when rare and poorly when common, or vice versa.
-
-This makes evolutionary game theory different from simpler fixed-fitness models. Instead of assigning each type a constant reproductive advantage, it models interaction itself as the source of selective pressure.
-
-Typical questions include:
-
-- Which strategies increase when rare?
-- Is there a stable mixture of strategies?
-- Does the system converge to equilibrium or cycle over time?
-- Can one strategy resist invasion by another?
-- How closely do simulations match theoretical ESS predictions?
-
-The models in this repository are intended as computational illustrations of those questions.
+Fitness of a population is often **frequency-dependent**. A strategy may do well when rare and poorly when common, or vice versa. This makes evolutionary game theory peculiar in his biologically-rooted assumptions and constrains.
 
 ---
 
@@ -55,14 +32,15 @@ At the moment, the repository contains two evolutionary game theory systems.
 
 This is the classic **Hawk–Dove** game associated with conflict over shared resources.
 
-The basic interpretation is:
+There is only two types of creatures in the population:
 
-- **Hawk** escalates conflict
-- **Dove** avoids costly escalation
+- **Hawk** escalates conflict (the aggressive kind)
+- **Dove** avoids conflict (the peaceful kind)
 
-The model captures a central Maynard Smith insight: aggressive behaviour is not always expected to take over completely. When fights are costly enough, selection can favour a **mixed equilibrium** rather than a population of only aggressive or only peaceful individuals.
+The insight captured my Maynard Smith is that aggressive behaviour is not always expected to take over completely, especially when fights are costly enough.
+Selection favours a **mixed equilibrium** rather than a population of only aggressive or only peaceful individuals.
 
-This model is the natural starting point for the repository because it introduces:
+This model is an easy & natural starting point for the repository because it introduces:
 
 - payoff matrices
 - expected payoffs
@@ -75,7 +53,7 @@ This model is the natural starting point for the repository because it introduce
 
 This model represents a **cyclic dominance system**, where no single strategy is universally best.
 
-It is inspired by the well-known side-blotched lizard example, where alternative mating strategies can behave in a Rock–Paper–Scissors pattern:
+It is inspired by the well-known side-blotched lizard example (https://en.wikipedia.org/wiki/Side-blotched_lizard), where alternative mating strategies can behave in a Rock–Paper–Scissors pattern:
 
 - one strategy beats a second,
 - the second beats a third,
@@ -95,15 +73,6 @@ This makes the lizard game an excellent contrast to Hawk–Dove: one model empha
 ## Purpose of the repository
 
 This repository is meant to be a clear modelling workspace for evolutionary game theory.
-
-Its goals are to:
-
-- implement classic evolutionary game models in a transparent way
-- connect simulation output to theory
-- provide interpretable examples of frequency-dependent selection
-- and create a base for gradually richer evolutionary dynamics
-
-The emphasis is on conceptual clarity first, and model complexity second.
 
 ---
 
@@ -137,8 +106,6 @@ The repository currently includes simulations for:
 - **Hawk–Dove**
 - **Rock–Paper–Scissors / side-blotched lizard dynamics**
 
-The exact scripts may evolve, but the present focus is on keeping each model minimal, readable, and theoretically grounded.
-
 Core features across the implemented models include:
 
 - explicit payoff structures
@@ -152,18 +119,14 @@ For the Hawk–Dove model, the current documentation is:
 [`docs/hawk_dove_minimal_explanation.md`](docs/hawk_dove_minimal_explanation.md)
 
 For the RPS Side-Blotched Lizard:
+
 [`docs/side_blotched_models_readme.md`](docs/side_blotched_models_readme.md)
 
 ---
 
 ## Why start with these models?
 
-These two systems give two of the cleanest introductions to evolutionary game theory:
-
-- **Hawk–Dove** shows how conflict can produce a stable strategic balance rather than a single winner.
-- **Rock–Paper–Scissors** shows how selection can be inherently cyclic, with success depending on who is currently common.
-
-Together, they cover two core phenomena of the field:
+These two systems give two of the cleanest introductions to evolutionary game theory. Together, they cover two core phenomena of the field:
 
 - **stable mixed equilibria**
 - **cyclic frequency-dependent dynamics**
@@ -208,31 +171,6 @@ Expected output depends on the model, but typically includes:
 - simulated strategy frequencies through time
 - and saved plots in `figures/`
 
----
-
-## Minimal research questions behind the repo
-
-This repository is motivated by questions such as:
-
-- When does aggression persist, and when is it selected against?
-- Under what conditions do mixed strategic equilibria arise?
-- When do evolutionary systems cycle rather than converge?
-- How closely do numerical simulations match theoretical ESS reasoning?
-- What changes when one moves from minimal deterministic dynamics to richer stochastic or agent-based formulations?
-
----
-
-## Roadmap
-
-Possible future additions:
-
-- [ ] finite-population versions of current models
-- [ ] stochastic interaction dynamics
-- [ ] agent-based implementations
-- [ ] additional Maynard Smith style games
-- [ ] parameter sweeps and phase diagrams
-- [ ] notebook-based visualizations
-- [ ] comparison between ESS predictions and simulated trajectories
 
 ---
 
