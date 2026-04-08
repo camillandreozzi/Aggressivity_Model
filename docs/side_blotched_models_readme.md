@@ -531,17 +531,3 @@ A good top-level link from the repository `README.md` would be:
 [`docs/side_blotched_models_readme.md`](docs/side_blotched_models_readme.md)
 ```
 
----
-
-# Next natural extensions
-
-If the project grows further, the next logical additions would be:
-
-- parameter sweeps,
-- repeated stochastic simulations,
-- fixation / extinction statistics,
-- seasonal breeding structure,
-- empirical calibration,
-- and graph-based interaction models.
-
-Those would continue the progression from simple evolutionary game theory toward richer evolutionary dynamics.
