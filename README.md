@@ -1,60 +1,109 @@
 # Evolutionary Game Theory Simulations
 
+This repository is a small but growing collection of simulations inspired by the work of **John Maynard Smith** and the development of **evolutionary game theory**.
 
-7/12 ≈ 0.583333
-```
+Rather than treating strategy as something chosen by perfectly rational agents, evolutionary game theory studies what happens when different behavioural types reproduce, compete, and change in frequency over time. In that setting, success is not defined by abstract rationality alone, but by whether a strategy can persist, spread, or resist invasion in a population.
 
-So the stable state is neither all hawks nor all doves.
-
-This is the conceptual starting point of the repository.
+This repository focuses on simple, interpretable models that help make those ideas concrete through simulation.
 
 ---
 
-## What this repository is for
+## John Maynard Smith
 
-This repo is organized as a gradual modelling project.
+John Maynard Smith was one of the central figures in twentieth-century theoretical biology. Trained originally as an engineer and later becoming a major evolutionary biologist, he helped bring mathematical reasoning into the study of behaviour, conflict, and adaptation.
 
-### Phase 1 — Minimal deterministic model
+He is especially known for developing **evolutionary game theory** as a biological framework. His work showed that strategic interaction is not only a matter for economics or philosophy, but also a core part of evolution itself. Organisms do not need to consciously calculate optimal choices: if a behavioural strategy performs well in a population, it can spread by natural selection.
 
-Implement the two-strategy Hawk–Dove game with replicator dynamics.
+Among his best-known contributions is the concept of the **Evolutionarily Stable Strategy (ESS)**: a strategy that, once common in a population, cannot easily be invaded by an alternative strategy. This idea became one of the foundations of modern evolutionary thinking about conflict, cooperation, signalling, and social behaviour.
 
-Goal:
+Maynard Smith’s work connects directly to classic models such as:
 
-- define the payoff matrix,
-- compute expected payoffs,
-- simulate the hawk proportion through time,
-- verify convergence to the theoretical mixed equilibrium.
+- Hawk–Dove conflict
+- Rock–Paper–Scissors style cyclic competition
+- signalling and contest behaviour
+- frequency-dependent selection more broadly
 
-### Phase 2 — Finite-population / agent-based model
+This repository is built in that intellectual tradition.
 
-Move from expected payoffs to explicit random pairwise interactions.
+---
 
-Goal:
+## What is evolutionary game theory?
 
-- simulate contests between individuals,
-- track realized instead of expected payoffs,
-- compare deterministic and stochastic dynamics.
+Evolutionary game theory studies populations of interacting strategies.
 
-### Phase 3 — More strategic richness
+The key idea is that the success of a strategy depends on the strategies it meets. In other words, fitness is often **frequency-dependent**. A strategy may do well when rare and poorly when common, or vice versa.
 
-Add conditional strategies such as:
+This makes evolutionary game theory different from simpler fixed-fitness models. Instead of assigning each type a constant reproductive advantage, it models interaction itself as the source of selective pressure.
 
-- Retaliator,
-- Bully,
-- Prober-retaliator.
+Typical questions include:
 
-This follows Dawkins's own discussion of more complex strategies beyond the minimal Hawk–Dove example.
+- Which strategies increase when rare?
+- Is there a stable mixture of strategies?
+- Does the system converge to equilibrium or cycle over time?
+- Can one strategy resist invasion by another?
+- How closely do simulations match theoretical ESS predictions?
 
-### Phase 4 — Extensions in evolutionary dynamics
+The models in this repository are intended as computational illustrations of those questions.
 
-Possible future directions:
+---
 
-- finite-population stochasticity,
-- mutation,
-- spatial or network interaction,
-- parameter sweeps,
-- sensitivity analysis,
-- comparison between ESS reasoning and dynamic simulation.
+## Models currently simulated
+
+At the moment, the repository contains two evolutionary game theory systems.
+
+### 1. Aggressivity model: Hawk vs Dove
+
+This is the classic **Hawk–Dove** game associated with conflict over shared resources.
+
+The basic interpretation is:
+
+- **Hawk** escalates conflict
+- **Dove** avoids costly escalation
+
+The model captures a central Maynard Smith insight: aggressive behaviour is not always expected to take over completely. When fights are costly enough, selection can favour a **mixed equilibrium** rather than a population of only aggressive or only peaceful individuals.
+
+This model is the natural starting point for the repository because it introduces:
+
+- payoff matrices
+- expected payoffs
+- frequency-dependent selection
+- replicator dynamics
+- theoretical mixed equilibria
+- comparison between analytical prediction and simulation
+
+### 2. Rock–Paper–Scissors model: side-blotched lizard game
+
+This model represents a **cyclic dominance system**, where no single strategy is universally best.
+
+It is inspired by the well-known side-blotched lizard example, where alternative mating strategies can behave in a Rock–Paper–Scissors pattern:
+
+- one strategy beats a second,
+- the second beats a third,
+- the third beats the first.
+
+This type of system is important because it shows that evolutionary dynamics do not always settle to a simple fixed point. Depending on the formulation, they may instead produce:
+
+- oscillations,
+- cyclic invasions,
+- long transients,
+- or coexistence maintained by strategic turnover.
+
+This makes the lizard game an excellent contrast to Hawk–Dove: one model emphasizes mixed equilibrium under conflict, the other emphasizes cyclic competition.
+
+---
+
+## Purpose of the repository
+
+This repository is meant to be a clear modelling workspace for evolutionary game theory.
+
+Its goals are to:
+
+- implement classic evolutionary game models in a transparent way,
+- connect simulation output to theory,
+- provide interpretable examples of frequency-dependent selection,
+- and create a base for gradually richer evolutionary dynamics.
+
+The emphasis is on conceptual clarity first, and model complexity second.
 
 ---
 
@@ -70,124 +119,7 @@ Aggressivity_Model/
 │   └── hawk_dove_minimal_explanation.md
 ├── figures/
 ├── src/
-│   └── hawk_dove_minimal.py
+│   ├── hawk_dove_minimal.py
+│   ├── hawk_dove_box_with_time_series.py
+│   └── rps_side_blotched_lizard.py
 └── notebooks/
-```
-
----
-
-## Current implementation
-
-The first script is:
-
-```text
-src/hawk_dove_minimal.py
-```
-
-It implements the smallest useful deterministic model.
-
-Core features:
-
-- parameter block for payoff values,
-- Hawk–Dove payoff matrix,
-- expected payoff computation,
-- average population payoff,
-- replicator-dynamics update,
-- theoretical mixed-equilibrium calculation,
-- saved plots of hawk frequency and expected payoffs.
-
-For a line-by-line explanation, see:
-
-[`docs/hawk_dove_minimal_explanation.md`](docs/hawk_dove_minimal_explanation.md)
-
----
-
-## Why replicator dynamics first
-
-Replicator dynamics is the cleanest first implementation because it expresses the core evolutionary idea directly:
-
-- strategies that perform better than average increase,
-- strategies that perform worse than average decrease.
-
-This makes it possible to verify the theoretical equilibrium before introducing stochasticity or finite-population effects.
-
----
-
-## Important conceptual note
-
-
-
-## Historical note
-
-
-
----
-
-## Installation
-
-Create a virtual environment and install dependencies:
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-```
-
-If `requirements.txt` is not yet present, the minimal dependencies are:
-
-```bash
-pip install numpy matplotlib
-```
-
----
-
-## Running the minimal model
-
-From the repository root:
-
-```bash
-python src/hawk_dove_minimal.py
-```
-
-Expected output:
-
-- a printed theoretical equilibrium,
-- a simulated final hawk frequency,
-- saved plots in `figures/`.
-
----
-
-## Minimal research questions behind the repo
-
-
-
----
-
-## Roadmap
-
-Planned additions:
-
-- [ ] multi-start deterministic experiments
-- [ ] finite-population agent-based simulation
-- [ ] stochastic encounter model
-- [ ] conditional strategies
-- [ ] parameter sweeps for `V`, `C`, and `D`
-- [ ] notebook visualizations
-- [ ] comparison of ESS predictions with dynamic simulation
-
----
-
-## References
-
-Primary conceptual source:
-
-
-
-## License
-
-Add a license here if you want the repository to be public and reusable.
-
-Common choices:
-
-- `MIT` for open reuse,
-- `Apache-2.0` for a more explicit patent-oriented structure.
