@@ -79,14 +79,14 @@ It is inspired by the well-known side-blotched lizard example, where alternative
 
 - one strategy beats a second,
 - the second beats a third,
-- the third beats the first.
+- the third beats the first
 
 This type of system is important because it shows that evolutionary dynamics do not always settle to a simple fixed point. Depending on the formulation, they may instead produce:
 
-- oscillations,
-- cyclic invasions,
-- long transients,
-- or coexistence maintained by strategic turnover.
+- oscillations
+- cyclic invasions
+- long transients
+- or coexistence maintained by strategic turnover
 
 This makes the lizard game an excellent contrast to Hawk–Dove: one model emphasizes mixed equilibrium under conflict, the other emphasizes cyclic competition.
 
@@ -98,10 +98,10 @@ This repository is meant to be a clear modelling workspace for evolutionary game
 
 Its goals are to:
 
-- implement classic evolutionary game models in a transparent way,
-- connect simulation output to theory,
-- provide interpretable examples of frequency-dependent selection,
-- and create a base for gradually richer evolutionary dynamics.
+- implement classic evolutionary game models in a transparent way
+- connect simulation output to theory
+- provide interpretable examples of frequency-dependent selection
+- and create a base for gradually richer evolutionary dynamics
 
 The emphasis is on conceptual clarity first, and model complexity second.
 
@@ -123,3 +123,130 @@ Aggressivity_Model/
 │   ├── hawk_dove_box_with_time_series.py
 │   └── rps_side_blotched_lizard.py
 └── notebooks/
+```
+
+---
+
+## Current implementation
+
+The repository currently includes simulations for:
+
+- **Hawk–Dove**
+- **Rock–Paper–Scissors / side-blotched lizard dynamics**
+
+The exact scripts may evolve, but the present focus is on keeping each model minimal, readable, and theoretically grounded.
+
+Core features across the implemented models include:
+
+- explicit payoff structures
+- expected payoff computation
+- population-share updates through time
+- visualisation of strategy frequencies
+- and comparison with known theoretical behaviour
+
+For the Hawk–Dove model, the current documentation is:
+
+[`docs/hawk_dove_minimal_explanation.md`](docs/hawk_dove_minimal_explanation.md)
+
+---
+
+## Why start with these models?
+
+These two systems give two of the cleanest introductions to evolutionary game theory:
+
+- **Hawk–Dove** shows how conflict can produce a stable strategic balance rather than a single winner.
+- **Rock–Paper–Scissors** shows how selection can be inherently cyclic, with success depending on who is currently common.
+
+Together, they cover two core phenomena of the field:
+
+- **stable mixed equilibria**
+- **cyclic frequency-dependent dynamics**
+
+---
+
+## Installation
+
+Create a virtual environment and install dependencies:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+If `requirements.txt` is not yet present, the minimal dependencies are:
+
+```bash
+pip install numpy matplotlib
+```
+
+---
+
+## Running the models
+
+From the repository root, run the relevant script, for example:
+
+```bash
+python src/hawk_dove_minimal.py
+```
+
+or
+
+```bash
+python src/rps_side_blotched_lizard.py
+```
+
+Expected output depends on the model, but typically includes:
+
+- printed parameters or equilibrium information
+- simulated strategy frequencies through time
+- and saved plots in `figures/`
+
+---
+
+## Minimal research questions behind the repo
+
+This repository is motivated by questions such as:
+
+- When does aggression persist, and when is it selected against?
+- Under what conditions do mixed strategic equilibria arise?
+- When do evolutionary systems cycle rather than converge?
+- How closely do numerical simulations match theoretical ESS reasoning?
+- What changes when one moves from minimal deterministic dynamics to richer stochastic or agent-based formulations?
+
+---
+
+## Roadmap
+
+Possible future additions:
+
+- [ ] finite-population versions of current models
+- [ ] stochastic interaction dynamics
+- [ ] agent-based implementations
+- [ ] additional Maynard Smith style games
+- [ ] parameter sweeps and phase diagrams
+- [ ] notebook-based visualizations
+- [ ] comparison between ESS predictions and simulated trajectories
+
+---
+
+## References
+
+Primary conceptual sources include the work of:
+
+- **John Maynard Smith**
+- George R. Price
+- Richard Dawkins
+- Martin A. Nowak
+- other contributors to evolutionary game theory and evolutionary dynamics
+
+---
+
+## License
+
+Add a license here if you want the repository to be public and reusable.
+
+Common choices:
+
+- `MIT` for open reuse
+- `Apache-2.0` for a more explicit patent-oriented structure
