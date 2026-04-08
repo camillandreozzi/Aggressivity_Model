@@ -1,103 +1,109 @@
-# Aggressivity_Model
+# Evolutionary Game Theory Simulations
 
-A small computational repository for reconstructing and extending the strategic models of aggression discussed in Richard Dawkins's *The Selfish Gene*, especially the Hawk–Dove model from Chapter 5, *Aggression: stability and the selfish machine*.
+This repository is a small but growing collection of simulations inspired by the work of **John Maynard Smith** and the development of **evolutionary game theory**.
 
-## Motivation
+Rather than treating strategy as something chosen by perfectly rational agents, evolutionary game theory studies what happens when different behavioural types reproduce, compete, and change in frequency over time. In that setting, success is not defined by abstract rationality alone, but by whether a strategy can persist, spread, or resist invasion in a population.
 
-This repository starts from a simple question:
-
-> Can a classic evolutionary game-theoretic model of aggression be reconstructed clearly in Python and then extended into a broader project in evolutionary dynamics?
-
-The first goal is not to build a biologically realistic simulator immediately. It is to begin with the smallest transparent model that captures the logic of strategic conflict.
-
-That first model is the Hawk–Dove game.
+This repository focuses on simple, interpretable models that help make those ideas concrete through simulation.
 
 ---
 
-## Theoretical background
+## John Maynard Smith
 
-In Chapter 5 of *The Selfish Gene*, Dawkins presents aggression not as a vague personality trait but as a strategic problem. The key idea is that the success of a behavioral strategy depends on the strategies used by others in the population.
+John Maynard Smith was one of the central figures in twentieth-century theoretical biology. Trained originally as an engineer and later becoming a major evolutionary biologist, he helped bring mathematical reasoning into the study of behaviour, conflict, and adaptation.
 
-The Hawk–Dove model formalizes this.
+He is especially known for developing **evolutionary game theory** as a biological framework. His work showed that strategic interaction is not only a matter for economics or philosophy, but also a core part of evolution itself. Organisms do not need to consciously calculate optimal choices: if a behavioural strategy performs well in a population, it can spread by natural selection.
 
-- **Hawk** escalates conflict.
-- **Dove** avoids serious escalation and relies on display or retreat.
+Among his best-known contributions is the concept of the **Evolutionarily Stable Strategy (ESS)**: a strategy that, once common in a population, cannot easily be invaded by an alternative strategy. This idea became one of the foundations of modern evolutionary thinking about conflict, cooperation, signalling, and social behaviour.
 
-The important lesson is that neither pure aggression nor pure peacefulness is automatically favored. What matters is the payoff structure.
+Maynard Smith’s work connects directly to classic models such as:
 
-Dawkins uses an illustrative numerical example in which:
+- Hawk–Dove conflict
+- Rock–Paper–Scissors style cyclic competition
+- signalling and contest behaviour
+- frequency-dependent selection more broadly
 
-- winning a contested resource gives a payoff of `50`,
-- losing gives `0`,
-- serious injury costs `100`,
-- a prolonged nonviolent display costs `10`.
-
-From these assumptions, the payoff matrix becomes:
-
-```text
-           Opponent
-           Hawk   Dove
-Player Hawk  -25    50
-       Dove    0    15
-```
-
-This yields a mixed equilibrium in which the stable hawk proportion is:
-
-```text
-7/12 ≈ 0.583333
-```
-
-So the stable state is neither all hawks nor all doves.
-
-This is the conceptual starting point of the repository.
+This repository is built in that intellectual tradition.
 
 ---
 
-## What this repository is for
+## What is evolutionary game theory?
 
-This repo is organized as a gradual modelling project.
+Evolutionary game theory studies populations of interacting strategies.
 
-### Phase 1 — Minimal deterministic model
+The key idea is that the success of a strategy depends on the strategies it meets. In other words, fitness is often **frequency-dependent**. A strategy may do well when rare and poorly when common, or vice versa.
 
-Implement the two-strategy Hawk–Dove game with replicator dynamics.
+This makes evolutionary game theory different from simpler fixed-fitness models. Instead of assigning each type a constant reproductive advantage, it models interaction itself as the source of selective pressure.
 
-Goal:
+Typical questions include:
 
-- define the payoff matrix,
-- compute expected payoffs,
-- simulate the hawk proportion through time,
-- verify convergence to the theoretical mixed equilibrium.
+- Which strategies increase when rare?
+- Is there a stable mixture of strategies?
+- Does the system converge to equilibrium or cycle over time?
+- Can one strategy resist invasion by another?
+- How closely do simulations match theoretical ESS predictions?
 
-### Phase 2 — Finite-population / agent-based model
+The models in this repository are intended as computational illustrations of those questions.
 
-Move from expected payoffs to explicit random pairwise interactions.
+---
 
-Goal:
+## Models currently simulated
 
-- simulate contests between individuals,
-- track realized instead of expected payoffs,
-- compare deterministic and stochastic dynamics.
+At the moment, the repository contains two evolutionary game theory systems.
 
-### Phase 3 — More strategic richness
+### 1. Aggressivity model: Hawk vs Dove
 
-Add conditional strategies such as:
+This is the classic **Hawk–Dove** game associated with conflict over shared resources.
 
-- Retaliator,
-- Bully,
-- Prober-retaliator.
+The basic interpretation is:
 
-This follows Dawkins's own discussion of more complex strategies beyond the minimal Hawk–Dove example.
+- **Hawk** escalates conflict
+- **Dove** avoids costly escalation
 
-### Phase 4 — Extensions in evolutionary dynamics
+The model captures a central Maynard Smith insight: aggressive behaviour is not always expected to take over completely. When fights are costly enough, selection can favour a **mixed equilibrium** rather than a population of only aggressive or only peaceful individuals.
 
-Possible future directions:
+This model is the natural starting point for the repository because it introduces:
 
-- finite-population stochasticity,
-- mutation,
-- spatial or network interaction,
-- parameter sweeps,
-- sensitivity analysis,
-- comparison between ESS reasoning and dynamic simulation.
+- payoff matrices
+- expected payoffs
+- frequency-dependent selection
+- replicator dynamics
+- theoretical mixed equilibria
+- comparison between analytical prediction and simulation
+
+### 2. Rock–Paper–Scissors model: side-blotched lizard game
+
+This model represents a **cyclic dominance system**, where no single strategy is universally best.
+
+It is inspired by the well-known side-blotched lizard example, where alternative mating strategies can behave in a Rock–Paper–Scissors pattern:
+
+- one strategy beats a second,
+- the second beats a third,
+- the third beats the first
+
+This type of system is important because it shows that evolutionary dynamics do not always settle to a simple fixed point. Depending on the formulation, they may instead produce:
+
+- oscillations
+- cyclic invasions
+- long transients
+- or coexistence maintained by strategic turnover
+
+This makes the lizard game an excellent contrast to Hawk–Dove: one model emphasizes mixed equilibrium under conflict, the other emphasizes cyclic competition.
+
+---
+
+## Purpose of the repository
+
+This repository is meant to be a clear modelling workspace for evolutionary game theory.
+
+Its goals are to:
+
+- implement classic evolutionary game models in a transparent way
+- connect simulation output to theory
+- provide interpretable examples of frequency-dependent selection
+- and create a base for gradually richer evolutionary dynamics
+
+The emphasis is on conceptual clarity first, and model complexity second.
 
 ---
 
@@ -113,7 +119,9 @@ Aggressivity_Model/
 │   └── hawk_dove_minimal_explanation.md
 ├── figures/
 ├── src/
-│   └── hawk_dove_minimal.py
+│   ├── hawk_dove_minimal.py
+│   ├── hawk_dove_box_with_time_series.py
+│   └── rps_side_blotched_lizard.py
 └── notebooks/
 ```
 
@@ -121,69 +129,38 @@ Aggressivity_Model/
 
 ## Current implementation
 
-The first script is:
+The repository currently includes simulations for:
 
-```text
-src/hawk_dove_minimal.py
-```
+- **Hawk–Dove**
+- **Rock–Paper–Scissors / side-blotched lizard dynamics**
 
-It implements the smallest useful deterministic model.
+The exact scripts may evolve, but the present focus is on keeping each model minimal, readable, and theoretically grounded.
 
-Core features:
+Core features across the implemented models include:
 
-- parameter block for payoff values,
-- Hawk–Dove payoff matrix,
-- expected payoff computation,
-- average population payoff,
-- replicator-dynamics update,
-- theoretical mixed-equilibrium calculation,
-- saved plots of hawk frequency and expected payoffs.
+- explicit payoff structures
+- expected payoff computation
+- population-share updates through time
+- visualisation of strategy frequencies
+- and comparison with known theoretical behaviour
 
-For a line-by-line explanation, see:
+For the Hawk–Dove model, the current documentation is:
 
 [`docs/hawk_dove_minimal_explanation.md`](docs/hawk_dove_minimal_explanation.md)
 
 ---
 
-## Why replicator dynamics first
+## Why start with these models?
 
-Replicator dynamics is the cleanest first implementation because it expresses the core evolutionary idea directly:
+These two systems give two of the cleanest introductions to evolutionary game theory:
 
-- strategies that perform better than average increase,
-- strategies that perform worse than average decrease.
+- **Hawk–Dove** shows how conflict can produce a stable strategic balance rather than a single winner.
+- **Rock–Paper–Scissors** shows how selection can be inherently cyclic, with success depending on who is currently common.
 
-This makes it possible to verify the theoretical equilibrium before introducing stochasticity or finite-population effects.
+Together, they cover two core phenomena of the field:
 
----
-
-## Important conceptual note
-
-The numerical values in the basic Hawk–Dove model are illustrative, not empirical. Dawkins explicitly presents the model as a simple one meant to clarify strategic logic rather than reproduce nature directly.
-
-That matters for the scope of this repository.
-
-This project begins as:
-
-- a reconstruction,
-- a computational learning tool,
-- a stepping stone toward richer models.
-
-It should not be mistaken for a calibrated biological model unless later stages add empirical grounding.
-
----
-
-## Historical note
-
-Dawkins later noted in the endnotes that one of the chapter's claims about Retaliator being evolutionarily stable was incorrect, and that dynamic computer simulation pointed instead to a stable mixture of Hawks and Bullies in that more complex game.
-
-This repository takes that correction seriously.
-
-One of the long-term aims is therefore not just to reproduce the original chapter, but to compare:
-
-- verbal ESS reasoning,
-- payoff-matrix logic,
-- dynamic simulation,
-- stochastic or finite-population behavior.
+- **stable mixed equilibria**
+- **cyclic frequency-dependent dynamics**
 
 ---
 
@@ -205,59 +182,63 @@ pip install numpy matplotlib
 
 ---
 
-## Running the minimal model
+## Running the models
 
-From the repository root:
+From the repository root, run the relevant script, for example:
 
 ```bash
 python src/hawk_dove_minimal.py
 ```
 
-Expected output:
+or
 
-- a printed theoretical equilibrium,
-- a simulated final hawk frequency,
-- saved plots in `figures/`.
+```bash
+python src/rps_side_blotched_lizard.py
+```
+
+Expected output depends on the model, but typically includes:
+
+- printed parameters or equilibrium information
+- simulated strategy frequencies through time
+- and saved plots in `figures/`
 
 ---
 
 ## Minimal research questions behind the repo
 
-Even the first script already addresses real conceptual questions:
+This repository is motivated by questions such as:
 
-- Why is all-aggression unstable?
-- Why is all-peacefulness unstable?
-- Why can a mixed equilibrium be stable even if it is not best for every individual?
-- How does evolutionary stability differ from collective welfare?
-
-These are central themes of Chapter 5.
+- When does aggression persist, and when is it selected against?
+- Under what conditions do mixed strategic equilibria arise?
+- When do evolutionary systems cycle rather than converge?
+- How closely do numerical simulations match theoretical ESS reasoning?
+- What changes when one moves from minimal deterministic dynamics to richer stochastic or agent-based formulations?
 
 ---
 
 ## Roadmap
 
-Planned additions:
+Possible future additions:
 
-- [ ] multi-start deterministic experiments
-- [ ] finite-population agent-based simulation
-- [ ] stochastic encounter model
-- [ ] conditional strategies
-- [ ] parameter sweeps for `V`, `C`, and `D`
-- [ ] notebook visualizations
-- [ ] comparison of ESS predictions with dynamic simulation
+- [ ] finite-population versions of current models
+- [ ] stochastic interaction dynamics
+- [ ] agent-based implementations
+- [ ] additional Maynard Smith style games
+- [ ] parameter sweeps and phase diagrams
+- [ ] notebook-based visualizations
+- [ ] comparison between ESS predictions and simulated trajectories
 
 ---
 
 ## References
 
-Primary conceptual source:
+Primary conceptual sources include the work of:
 
-- Richard Dawkins, *The Selfish Gene*, Chapter 5: *Aggression: stability and the selfish machine*
-
-Also relevant in the same book:
-
-- Dawkins's later endnotes correcting the claim about Retaliator,
-- the broader discussion of selfish genes, strategic interaction, and evolutionary stability.
+- **John Maynard Smith**
+- George R. Price
+- Richard Dawkins
+- Martin A. Nowak
+- other contributors to evolutionary game theory and evolutionary dynamics
 
 ---
 
@@ -267,5 +248,5 @@ Add a license here if you want the repository to be public and reusable.
 
 Common choices:
 
-- `MIT` for open reuse,
-- `Apache-2.0` for a more explicit patent-oriented structure.
+- `MIT` for open reuse
+- `Apache-2.0` for a more explicit patent-oriented structure
