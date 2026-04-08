@@ -1,33 +1,10 @@
 # `hawk_dove_minimal.py` — code explanation
 
-This document explains the first minimal implementation of the Hawk–Dove model in the `Aggressivity_Model` repository.
-
-## Where this file should go
-
-Place this file here:
-
-```text
-Aggressivity_Model/
-├── README.md
-├── requirements.txt
-├── docs/
-│   └── hawk_dove_minimal_explanation.md
-├── figures/
-└── src/
-    └── hawk_dove_minimal.py
-```
-
-Recommended GitHub path:
-
-`docs/hawk_dove_minimal_explanation.md`
-
-Then add a link to it from the root `README.md`.
-
 ---
 
 ## Purpose of the script
 
-The goal of `src/hawk_dove_minimal.py` is to implement the smallest deterministic version of the Hawk–Dove game discussed in *The Selfish Gene*.
+The goal of `src/hawk_dove_minimal.py` is to implement the smallest deterministic version of the Hawk–Dove game.
 
 The script does four things:
 
@@ -36,7 +13,6 @@ The script does four things:
 3. updates the hawk proportion through replicator dynamics,
 4. plots the trajectory of the population over time.
 
-This is the cleanest first step because it isolates the core strategic idea before moving to finite-population or agent-based simulations.
 
 ---
 
@@ -66,7 +42,6 @@ These are the numerical assumptions of the toy model.
 - `C`: cost of serious injury
 - `D`: cost of a long display / time waste
 
-These are deliberately simple illustrative values.
 
 ---
 
@@ -143,13 +118,8 @@ def average_population_payoff(x_hawk: float, payoff_matrix: np.ndarray) -> float
 
 This computes the mean payoff currently achieved in the whole population.
 
-Why this matters:
-
 - if hawks do better than average, hawks should increase,
 - if hawks do worse than average, hawks should decrease.
-
-That logic is exactly what replicator dynamics formalizes.
-
 ---
 
 ### 5. Replicator update
@@ -213,8 +183,6 @@ For this specific matrix, the result is:
 ```text
 x_star = 7/12 ≈ 0.583333
 ```
-
-This is the famous stable hawk frequency in Dawkins's example.
 
 ---
 
@@ -288,8 +256,6 @@ It avoids:
 - spatial structure,
 - retaliation and bullying strategies.
 
-That is a strength, not a limitation. It gives a transparent baseline that can later be extended.
-
 ---
 
 ## Recommended next steps after this file
@@ -303,20 +269,3 @@ Once `hawk_dove_minimal.py` works, the natural extensions are:
 5. **parameter sweeps** for `V`, `C`, and `D`.
 
 ---
-
-## Suggested README link
-
-Add this line to the root `README.md`:
-
-```md
-See [`docs/hawk_dove_minimal_explanation.md`](docs/hawk_dove_minimal_explanation.md) for a detailed explanation of the first implementation.
-```
-
----
-
-## Suggested commit
-
-```bash
-git add docs/hawk_dove_minimal_explanation.md README.md
-git commit -m "Add documentation for minimal Hawk-Dove model"
-```

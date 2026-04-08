@@ -30,19 +30,17 @@ That is the core reason this system is naturally modeled with **evolutionary gam
 
 ---
 
-## Why there are three versions
-
-The three scripts are not redundant. They answer different questions.
+## The three versions
 
 ### 1. The simple model
-Use this when the goal is to understand the **basic game logic** clearly.
+To understand the **basic game logic**.
 
 It is the best entry point for:
 - payoff matrices,
 - cyclic dominance,
 - frequency-dependent selection,
 - total population growth with density dependence,
-- and visually clean time series.
+- and time series.
 
 ### 2. The advanced model
 Use this when the goal is to move closer to a more realistic evolutionary-dynamics simulation.
@@ -51,13 +49,7 @@ It adds:
 - **stochastic births and deaths**,
 - **mutation / morph switching at reproduction**,
 - **integer counts instead of only smooth deterministic trajectories**,
-- and a **simplex plot** showing the population composition trajectory in three-strategy space.
-
-This version is useful for studying:
-- transient behavior,
-- noise,
-- mutation-maintained coexistence,
-- and how well-mixed populations move through Rock–Paper–Scissors state space.
+- and a **simplex plot** showing the population composition trajectory in three-strategy space with a finite population constraint.
 
 ### 3. The spatial model
 Use this when the goal is to study what changes once interactions become **local rather than well-mixed**.
@@ -70,12 +62,7 @@ It adds:
 - mutation,
 - and spatial pattern formation.
 
-This version is useful for studying:
-- clustering,
-- local persistence,
-- invasion fronts,
-- coexistence through spatial structure,
-- and the difference between global averages and local ecological structure.
+This version is useful for studying coexistence through spatial structure and the difference between global averages and local ecological structure.
 
 ---
 
