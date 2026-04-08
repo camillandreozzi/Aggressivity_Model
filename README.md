@@ -116,11 +116,14 @@ Aggressivity_Model/
 ├── README.md
 ├── requirements.txt
 ├── docs/
-│   └── hawk_dove_minimal_explanation.md
+│   ├── hawk_dove_minimal_explanation.md
+│   └── side_blotched_models_readme.md
 ├── figures/
 ├── src/
 │   ├── hawk_dove_minimal.py
 │   ├── hawk_dove_box_with_time_series.py
+│   ├── side_blotched_advanced.py
+│   ├── side_blotched_spatial.py
 │   └── rps_side_blotched_lizard.py
 └── notebooks/
 ```
@@ -147,6 +150,9 @@ Core features across the implemented models include:
 For the Hawk–Dove model, the current documentation is:
 
 [`docs/hawk_dove_minimal_explanation.md`](docs/hawk_dove_minimal_explanation.md)
+
+For the RPS Side-Blotched Lizard:
+[`docs/side_blotched_models_readme.md`](docs/side_blotched_models_readme.md)
 
 ---
 
