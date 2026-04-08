@@ -1,49 +1,6 @@
-# Aggressivity_Model
+# Evolutionary Game Theory Simulations
 
-A small computational repository for reconstructing and extending the strategic models of aggression discussed in Richard Dawkins's *The Selfish Gene*, especially the Hawk–Dove model from Chapter 5, *Aggression: stability and the selfish machine*.
 
-## Motivation
-
-This repository starts from a simple question:
-
-> Can a classic evolutionary game-theoretic model of aggression be reconstructed clearly in Python and then extended into a broader project in evolutionary dynamics?
-
-The first goal is not to build a biologically realistic simulator immediately. It is to begin with the smallest transparent model that captures the logic of strategic conflict.
-
-That first model is the Hawk–Dove game.
-
----
-
-## Theoretical background
-
-In Chapter 5 of *The Selfish Gene*, Dawkins presents aggression not as a vague personality trait but as a strategic problem. The key idea is that the success of a behavioral strategy depends on the strategies used by others in the population.
-
-The Hawk–Dove model formalizes this.
-
-- **Hawk** escalates conflict.
-- **Dove** avoids serious escalation and relies on display or retreat.
-
-The important lesson is that neither pure aggression nor pure peacefulness is automatically favored. What matters is the payoff structure.
-
-Dawkins uses an illustrative numerical example in which:
-
-- winning a contested resource gives a payoff of `50`,
-- losing gives `0`,
-- serious injury costs `100`,
-- a prolonged nonviolent display costs `10`.
-
-From these assumptions, the payoff matrix becomes:
-
-```text
-           Opponent
-           Hawk   Dove
-Player Hawk  -25    50
-       Dove    0    15
-```
-
-This yields a mixed equilibrium in which the stable hawk proportion is:
-
-```text
 7/12 ≈ 0.583333
 ```
 
@@ -158,32 +115,11 @@ This makes it possible to verify the theoretical equilibrium before introducing 
 
 ## Important conceptual note
 
-The numerical values in the basic Hawk–Dove model are illustrative, not empirical. Dawkins explicitly presents the model as a simple one meant to clarify strategic logic rather than reproduce nature directly.
 
-That matters for the scope of this repository.
-
-This project begins as:
-
-- a reconstruction,
-- a computational learning tool,
-- a stepping stone toward richer models.
-
-It should not be mistaken for a calibrated biological model unless later stages add empirical grounding.
-
----
 
 ## Historical note
 
-Dawkins later noted in the endnotes that one of the chapter's claims about Retaliator being evolutionarily stable was incorrect, and that dynamic computer simulation pointed instead to a stable mixture of Hawks and Bullies in that more complex game.
 
-This repository takes that correction seriously.
-
-One of the long-term aims is therefore not just to reproduce the original chapter, but to compare:
-
-- verbal ESS reasoning,
-- payoff-matrix logic,
-- dynamic simulation,
-- stochastic or finite-population behavior.
 
 ---
 
@@ -223,14 +159,7 @@ Expected output:
 
 ## Minimal research questions behind the repo
 
-Even the first script already addresses real conceptual questions:
 
-- Why is all-aggression unstable?
-- Why is all-peacefulness unstable?
-- Why can a mixed equilibrium be stable even if it is not best for every individual?
-- How does evolutionary stability differ from collective welfare?
-
-These are central themes of Chapter 5.
 
 ---
 
@@ -252,14 +181,7 @@ Planned additions:
 
 Primary conceptual source:
 
-- Richard Dawkins, *The Selfish Gene*, Chapter 5: *Aggression: stability and the selfish machine*
 
-Also relevant in the same book:
-
-- Dawkins's later endnotes correcting the claim about Retaliator,
-- the broader discussion of selfish genes, strategic interaction, and evolutionary stability.
-
----
 
 ## License
 
